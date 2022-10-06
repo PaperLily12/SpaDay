@@ -10,6 +10,7 @@ namespace SpaDay.Controllers
 {
     public class SpaController : Controller
     {
+        public static readonly string[] nailColors = { "DarkSalmon", "LightCoral", "MediumTurquoise", "Plum", "Pink", "PaleTurquoise" };
         public bool CheckSkinType(string skinType, string facialType)
         {
 
@@ -39,9 +40,12 @@ namespace SpaDay.Controllers
         }
 
         [HttpPost]
-        [Route("/spa")]
+        [Route("/spa/menu")]
         public IActionResult Menu(string name, string skintype, string manipedi)
         {
+            ViewBag.name = name;
+            ViewBag.skintype = skintype;
+            ViewBag.manipedi = manipedi;
             List<string> facials = new List<string>()
             {
                 "Microdermabrasion", "Hydrofacial", "Rejuvenating", "Enzyme Peel"
@@ -55,6 +59,8 @@ namespace SpaDay.Controllers
                     appropriateFacials.Add(facials[i]);
                 }
             }
+            ViewBag.appropriateFacials = appropriateFacials;
+            ViewBag.nailColors = nailColors;
             return View();
         }
 
