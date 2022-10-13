@@ -14,7 +14,6 @@ namespace SpaDay.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.error = false;
             return View();
         }
 
@@ -25,7 +24,7 @@ namespace SpaDay.Controllers
             if (newUser.Password != verify)
             {
                 ViewBag.password = newUser.Password;
-                ViewBag.error = true;
+                ViewBag.error = "Your passwords must match!";
                 return Redirect("/user/add");
             }
             return View("Index");

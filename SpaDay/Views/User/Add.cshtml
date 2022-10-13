@@ -3,7 +3,13 @@
         Your passwords must match!
     </div>
 }
-<form method="POST" action="/user">
+@if (!ViewBag.error.isNullOrEmpty()){
+    <div class="alert alert-danger" role="alert">
+        <p>@ViewBag.error</p>
+    </div>
+}
+
+<form method="POST" asp-controller="User" asp-action="SubmitAddUserForm">
     <input type="text" name="username" placeholder="username" value=@ViewBag.username/>
     <input type="email" name="email" placeholder="email address" value=@ViewBag.password/>
     <input type="password" name="password" placeholder="password" />
