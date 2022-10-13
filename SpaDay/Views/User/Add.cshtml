@@ -1,14 +1,9 @@
-﻿@if (ViewBag.error) {
+﻿@if (ViewBag.error != null) {
     <div class="alert alert-danger" role="alert">
         Your passwords must match!
     </div>
 }
-@if (!ViewBag.error.isNullOrEmpty()){
-    <div class="alert alert-danger" role="alert">
-        <p>@ViewBag.error</p>
-    </div>
-}
-
+<h1>@ViewBag.error</h1>
 <form method="POST" asp-controller="User" asp-action="SubmitAddUserForm">
     <input type="text" name="username" placeholder="username" value=@ViewBag.username/>
     <input type="email" name="email" placeholder="email address" value=@ViewBag.password/>
