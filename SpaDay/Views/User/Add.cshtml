@@ -1,0 +1,12 @@
+﻿@if (ViewBag.error) {
+    <div class="alert alert-danger" role="alert">
+        Your passwords must match!
+    </div>
+}
+<form method="POST" action="/user">
+    <input type="text" name="username" placeholder="username" value=@ViewBag.username/>
+    <input type="email" name="email" placeholder="email address" value=@ViewBag.password/>
+    <input type="password" name="password" placeholder="password" />
+    <input type="password" name="verify" placeholder="confirm password" />
+    <input type="submit" value="Sign up"/>
+</form>
